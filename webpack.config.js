@@ -19,12 +19,16 @@ module.exports = {
         ]
     },
     mode: 'development',
+    devServer: {
+        historyApiFallback: true,
+        publicPath: '/'
+    },
     plugins: [
         // this will create a copy of index,html file in apps folder in dist,
         // but the copy one will automatically have the script reference to 
         // bundled file when run npm build
         new HtmlWebapckPlugin({
-            template: 'src/index.html'
+            template: 'public/index.html'
         })
     ]
 };
