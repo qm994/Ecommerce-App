@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './index.css';
 
 import HomePage from './pages/homepage/homepage.component';
@@ -7,15 +8,17 @@ import HomePage from './pages/homepage/homepage.component';
 function App() {
   return (
     <div>
-      <HomePage />
+      <Route exact path='/'>
+        <HomePage />
+      </Route>
     </div>
   );
 }
 
 ReactDOM.render(
-  <React.StrictMode>
+  <BrowserRouter>
     <App />
-  </React.StrictMode>,
+  </BrowserRouter>,
   document.getElementById('app')
 );
 
