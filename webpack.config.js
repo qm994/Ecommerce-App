@@ -14,6 +14,7 @@ module.exports = {
             // while we use webpack, anytime we see the files end in js, we use 
             // babel-loader to do the transformation
             {test: /\.(js)$/, use: ['babel-loader']},
+            {test: /\.(css)$/, use: ['style-loader', 'css-loader']},
             {test: /\.s[ac]ss$/i, use: ['style-loader', 'css-loader', 'sass-loader']}
         ]
     },
