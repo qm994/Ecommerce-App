@@ -7,6 +7,7 @@ import './App.css';
 import HomePage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shop/shop.component.js';
 import Header from './components/header/header.component.js';
+import SignInSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 
 
 const NotFound = () => <h1>404.. This page is not found!</h1>
@@ -18,6 +19,7 @@ function App() {
       <Switch>
         <Route exact path='/' component={HomePage} />
         <Route path='/shop' component={ShopPage} />
+        <Route path='/signin' component={SignInSignUpPage} />
         <Route component={NotFound} />
       </Switch>
     </div>
