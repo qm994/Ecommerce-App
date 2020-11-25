@@ -15,16 +15,21 @@ module.exports = {
             // babel-loader to do the transformation
             {test: /\.(js)$/, use: ['babel-loader']},
             {test: /\.(css)$/, use: ['style-loader', 'css-loader']},
-            {test: /\.s[ac]ss$/i, use: ['style-loader', 'css-loader', 'sass-loader']}
+            {test: /\.s[ac]ss$/i, use: ['style-loader', 'css-loader', 'sass-loader']},
+            {test: /\.svg$/, use: ['@svgr/webpack', 'url-loader']}
         ]
     },
     mode: 'development',
+    devServer: {
+        historyApiFallback: true,
+        publicPath: '/'
+    },
     plugins: [
         // this will create a copy of index,html file in apps folder in dist,
         // but the copy one will automatically have the script reference to 
         // bundled file when run npm build
         new HtmlWebapckPlugin({
-            template: 'src/index.html'
+            template: 'public/index.html'
         })
     ]
 };
