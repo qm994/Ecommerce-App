@@ -18,8 +18,26 @@ const config =
 // @userAuth: the user object return by the auth.onAuthStateChanged function
 export const createUserProfileDocument = async (userAuth, additionalData) => {
     if(!userAuth) return;
-    const userRef = firestore.doc('users/eEv8vC59X2CE4Rcd9xEQ')
-    console.log(firestore.doc('users/eEv8vC59X2CE4Rcd9xEQ'))
+    const userRef = firestore.doc(`users/${userAuth.uid}`)// == firestore.collection('users').doc(`${userAuth.uid}`)
+    const snapShot = await userRef.get();
+    console.log(snapShot)
+    // if the signed in user not in the firestore users, we store it 
+    if(!snapShot.exists) {
+        const { displayName, email } = userAuth;
+        const createdAt = new Date();
+
+        try {
+            await userRef.set({
+                displayName: displayName,
+                email: email,
+                createdAt: createdAt,
+                ...additionalData
+            })
+        } catch (error) {
+            console.log('errored when set the user to firstore')
+        }
+    }   
+    return userRef
 }
 
 // initialize a firebase app use the config file
