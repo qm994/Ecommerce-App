@@ -18,6 +18,7 @@ const config =
 // @userAuth: the user object return by the auth.onAuthStateChanged function
 export const createUserProfileDocument = async (userAuth, additionalData) => {
     if(!userAuth) return;
+    // userRef is a Document Reference Object
     const userRef = firestore.doc(`users/${userAuth.uid}`)// == firestore.collection('users').doc(`${userAuth.uid}`)
     const snapShot = await userRef.get();
     console.log(snapShot)
