@@ -14,6 +14,14 @@ const config =
         measurementId: "G-K2CF7RDC2E"
     }
 
+// save the user profile to filestore when the user is not null
+// @userAuth: the user object return by the auth.onAuthStateChanged function
+export const createUserProfileDocument = async (userAuth, additionalData) => {
+    if(!userAuth) return;
+    const userRef = firestore.doc('users/eEv8vC59X2CE4Rcd9xEQ')
+    console.log(firestore.doc('users/eEv8vC59X2CE4Rcd9xEQ'))
+}
+
 // initialize a firebase app use the config file
 firebase.initializeApp(config);
 

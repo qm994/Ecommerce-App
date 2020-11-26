@@ -2,7 +2,12 @@ const path = require('path');
 const HtmlWebapckPlugin = require('html-webpack-plugin');
 module.exports = {
     // the entry file to kick off everything and we are going to bundle all the modules here
-    entry: './src/index.js',
+    entry: {
+        main: [
+			'@babel/polyfill',
+			'./src/index.js',
+		]
+    },
     output: {
         // the path represent where we are going to put those bundled files
         path: path.resolve(__dirname, 'dist'),
