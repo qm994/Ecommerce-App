@@ -23,6 +23,7 @@ class SignIn extends React.Component {
                 email: '',
                 password: ''
             })
+            alert("U are successed sign in!")
         } catch (error) {
             let errorCode = error.code;
             let errorMessage = error.message;
