@@ -30,7 +30,6 @@ class App extends React.Component {
           const userRef = await createUserProfileDocument(userAuth);
           // get all Document Reference's snap shots
           userRef.onSnapshot(snapShot => {
-            console.log(snapShot.data())
             this.setState({
               currentUser: {
                 id: snapShot.id,
@@ -38,7 +37,7 @@ class App extends React.Component {
               }
             }, () => {
               console.log(`the state if userAuth is not null`)
-              console.log(this.state.currentUser)
+              console.log(this.state)
             })
           })
         } else {
