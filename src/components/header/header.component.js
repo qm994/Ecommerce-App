@@ -7,7 +7,7 @@ import { ReactComponent as Logo } from '../../assets/crown.svg';
 import CartIcon from '../cart-icon/cart-icon.component';
 import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 
-const Header = ({ currentUser }) => {
+const Header = ({ currentUser, hidden }) => {
     return (
         <div class="header">
             <Link to='/' className='logo-container'>
@@ -24,15 +24,20 @@ const Header = ({ currentUser }) => {
                 }
                 <CartIcon />
             </div>
-            <CartDropdown />
+            {
+                hidden
+                ? null
+                : <CartDropdown />
+            }
         </div>
     )
 }
 
 
 // state is the root reducer?
-const mapStateToProps = (state) => ({
-    currentUser: state.user.currentUser
+const mapStateToProps = ({ user: {currentUser}, cart: {hidden} }) => ({
+    currentUser,
+    hidden
 })
 
 export default connect(mapStateToProps)(Header);
