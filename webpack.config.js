@@ -12,7 +12,8 @@ module.exports = {
         // the path represent where we are going to put those bundled files
         path: path.resolve(__dirname, 'dist'),
         // all the bundled files put this file
-        filename: 'index_bundle.js'
+        filename: 'index_bundle.js',
+        publicPath: '/'
     },
     module: {
         rules: [
