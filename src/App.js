@@ -2,6 +2,7 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 import './App.css';
 
 import HomePage from './pages/homepage/homepage.component';
@@ -11,6 +12,7 @@ import SignInSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.co
 import { auth, createUserProfileDocument } from '../src/firebase/firebase.utils';
 
 import { setCurrentUser } from './redux/user/user.actions';
+import { selectCurrentUser } from './redux/user/user.selectors';
 
 const NotFound = () => <h1>404.. This page is not found!</h1>
 
@@ -66,8 +68,8 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = ({ user }) => ({
-  currentUser: user.currentUser
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser
 })
 
 const mapDispatchToProps = (dispatch) => ({
