@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebapckPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     // the entry file to kick off everything and we are going to bundle all the modules here
     entry: {
@@ -36,7 +37,8 @@ module.exports = {
         // but the copy one will automatically have the script reference to 
         // bundled file when run npm build
         new HtmlWebapckPlugin({
-            template: 'public/index.html'
+            template: 'public/index.html',
+            favicon: 'public/favicon.ico'
         })
     ]
 };
