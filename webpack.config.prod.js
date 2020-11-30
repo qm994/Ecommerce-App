@@ -3,7 +3,6 @@ const HtmlWebapckPlugin = require('html-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     mode: 'production',
-    devtool: 'none',
     // the entry file to kick off everything and we are going to bundle all the modules here
     entry: {
         main: [
