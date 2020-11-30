@@ -22,7 +22,8 @@ module.exports = {
             {test: /\.(js)$/, use: ['babel-loader']},
             {test: /\.(css)$/, use: ['style-loader', 'css-loader']},
             {test: /\.s[ac]ss$/i, use: ['style-loader', 'css-loader', 'sass-loader']},
-            {test: /\.svg$/, use: ['@svgr/webpack', 'url-loader']}
+            {test: /\.svg$/, use: ['@svgr/webpack', 'url-loader']},
+            {test: /\.js$/, enforce: 'pre', use: ['source-map-loader']}
         ]
     },
     mode: 'development',
