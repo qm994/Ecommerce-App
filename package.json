@@ -19,7 +19,8 @@
     "reselect": "^4.0.0"
   },
   "scripts": {
-    "start": "webpack serve --mode development",
+    "start": "react-scripts start",
+    "start:local": "webpack serve --mode development",
     "build:prod": "webpack --config webpack.config.prod.js",
     "build": "webpack --config webpack.config.prod.js",
     "test": "react-scripts test",
