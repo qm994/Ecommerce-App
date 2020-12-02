@@ -35,6 +35,9 @@ class App extends React.Component {
           const userRef = await createUserProfileDocument(userAuth);
           // get all Document Reference's snap shots
           userRef.onSnapshot(snapShot => {
+            
+            console.log(`Received doc snapshot: ${JSON.stringify(snapShot.data(), null, 4)}`)
+            
             setCurrentUser({
               id: snapShot.id,
               ...snapShot.data()
