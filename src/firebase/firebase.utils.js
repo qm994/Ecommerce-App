@@ -41,6 +41,20 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
     return userRef
 }
 
+// this is a one time function to backfill the data to firestore
+export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
+    const collectionRef = firestore.collection(collectionKey);
+    console.log(collectionRef)
+
+    const batch = firestore.batch()
+    objectsToAdd.forEach(obj => {
+        const newDocRef = collectionRef.doc(); // this will random generate a empty document reference and generate the uid
+        batch.set(newDocRef, obj); 
+    });
+
+    await batch.commit();
+}
+
 // initialize a firebase app use the config file
 firebase.initializeApp(config);
 
