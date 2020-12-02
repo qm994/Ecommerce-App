@@ -5,7 +5,7 @@ import { createStructuredSelector } from 'reselect';
 import { auth } from '../../firebase/firebase.utils';
 import { ReactComponent as Logo } from '../../assets/crown.svg';
 
-import { HeaderContainer, LogoContainer, OptionsContainer, OptionLink, OptionDiv } from './header.styles';
+import { HeaderContainer, LogoContainer, OptionsContainer, OptionLink } from './header.styles';
 import CartIcon from '../cart-icon/cart-icon.component';
 import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
@@ -24,7 +24,8 @@ const Header = ({ currentUser, hidden }) => {
                 <OptionLink to='/shop'>Contact</OptionLink>
                 {
                     currentUser
-                    ? <OptionDiv onClick={() => auth.signOut()}>SIGN OUT</OptionDiv>
+                    // by passing div we transform Link to a div
+                    ? <OptionLink as='div' onClick={() => auth.signOut()}>SIGN OUT</OptionLink>
                     : <OptionLink to='/signin'>SIGN IN</OptionLink>
                 }
                 <CartIcon />
