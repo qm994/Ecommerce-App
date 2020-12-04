@@ -41,6 +41,38 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
     return userRef
 }
 
+// this is a one time function to backfill the data to firestore
+export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
+    const collectionRef = firestore.collection(collectionKey);
+    console.log(collectionRef)
+
+    const batch = firestore.batch()
+    objectsToAdd.forEach(obj => {
+        const newDocRef = collectionRef.doc(); // this will random generate a empty document reference and generate the uid
+        batch.set(newDocRef, obj); 
+    });
+
+    return await batch.commit();
+}
+
+// transform the collections reference's snapshot to actual data like the old shop_data.js
+export const convertCollectionsSnapshotToMap = (collections) => {
+    const transformedCollection = collections.docs.map(doc => {
+        const { title, items } = doc.data();
+        return {
+            routeName: encodeURI(title.toLowerCase()),
+            id: doc.id,
+            title,
+            items
+        }
+    });
+
+    return transformedCollection.reduce((accumulator, collection) => {
+        accumulator[collection.title.toLowerCase()] = collection;
+        return accumulator
+    }, {})
+}
+
 // initialize a firebase app use the config file
 firebase.initializeApp(config);
 
