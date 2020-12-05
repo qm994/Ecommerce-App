@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import CollectionPage from '../collection/collection.component';
@@ -11,28 +11,27 @@ import { createStructuredSelector } from 'reselect';
 const CollectionsOverviewWithSpinner = WithSpinner(CollectionsOverview);
 const CollectionPageWithSpinner = WithSpinner(CollectionPage);
 
-class ShopPage extends React.Component {
+const ShopPage = ({ fetchCollectionsStartAsync, ...otherProps }) => {
     
-    unsubscribeFromSnapshot = null;
+    useEffect(() => {
+        fetchCollectionsStartAsync()
+    }, [fetchCollectionsStartAsync]);
+    // fetchCollectionsStartAsync redux thunk async function called inside the useEffect
+    // when the component firstly render and mount and update the states
+    // if we dont add the `deps` parameter, it will cause a infinite loop
+    const { match, isCollectionFetching, isCollectionLoaded } = otherProps;
 
-    componentDidMount() {
-        const { fetchCollectionsStartAsync } = this.props;
-        fetchCollectionsStartAsync();
-    }
+    return (
+        <div className='shop-page'>
+            <Route exact path={`${match.path}`}
+                render={(props) => <CollectionsOverviewWithSpinner isLoading={isCollectionFetching} {...props} />}
+            />
+            <Route path={`${match.path}/:collectionId`}
+                render={(props) => <CollectionPageWithSpinner isLoading={!isCollectionLoaded} {...props} />}
+            />
+        </div>
+    )
 
-    render() {
-        const { match, isCollectionFetching, isCollectionLoaded } = this.props;
-        return (
-            <div className='shop-page'>
-                <Route exact path={`${match.path}`}
-                    render={(props) => <CollectionsOverviewWithSpinner isLoading={isCollectionFetching} {...props} />}
-                />
-                <Route path={`${match.path}/:collectionId`}
-                    render={(props) => <CollectionPageWithSpinner isLoading={!isCollectionLoaded} {...props} />}
-                />
-            </div>
-        )
-    }
 }
 
 const mapDispatchToProps = (dispatch) => ({
