@@ -1,5 +1,6 @@
 {
   "name": "ecommerce-react",
+  "proxy": "http://localhost:5000",
   "jest": {
     "moduleNameMapper": {
       "\\.(css|less|scss)$": "identity-obj-proxy",

@@ -23,9 +23,10 @@ if (process.env.NODE_ENV === 'production') {
   app.get('*', function(req, res) {
     res.sendFile(path.join(__dirname, 'client/dist', 'index.html'));
   });
-} else {
-    app.use('/payment', createProxyMiddleware({ target: 'http://localhost:5000', changeOrigin: true }));
-}
+} 
+// else {
+//     app.use('/payment', createProxyMiddleware({ target: 'http://localhost:5000', changeOrigin: true }));
+// }
 
 app.listen(port, error => {
   if (error){ throw error };

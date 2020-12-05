@@ -30,7 +30,10 @@ module.exports = {
     mode: 'development',
     devServer: {
         historyApiFallback: true,
-        publicPath: '/'
+        publicPath: '/',
+        proxy: {
+            '/payment': 'http://localhost:5000'
+        }
     },
     plugins: [
         // this will create a copy of index,html file in apps folder in dist,
