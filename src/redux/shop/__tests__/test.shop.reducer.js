@@ -1,6 +1,7 @@
 import shopReducer from '../../shop/shop.reducer';
 import SHOP_DATA from '../../shop/shop-data';
-
+import { firestore, convertCollectionsSnapshotToMap } from '../../../firebase/firebase.utils';
+import { fetchCollectionsStartAsync, fetchCollectionsStart, fetchCollectionsSuccess, fetchCollectionsFailure } from '../shop.actions';
 
 describe('shop reducer', () => {
     it('should return the initial state', () => {
@@ -10,4 +11,8 @@ describe('shop reducer', () => {
         }
       )
     })
+})
+
+it('test the fetch collection asyn', () => {
+  const mockAsyn = jest.fn().mockReturnValue()
 })
