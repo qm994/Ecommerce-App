@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`expect to match the CartItem it can find the CartItem 1`] = `ShallowWrapper {}`;

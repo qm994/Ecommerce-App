@@ -4,7 +4,7 @@ import CartDropdown from '../cart-dropdown.component';
 import CustomButton from '../../../components/custom-button/custom-button.component';
 
 describe('expect to render CartDropDown', () => {
-    it('it can be find', () => {
+    it('it can find the button in dropdown', () => {
         const wrapper = shallow(<CartDropdown />);
         expect(wrapper.find(<CustomButton />)).toBeTruthy; 
     })
