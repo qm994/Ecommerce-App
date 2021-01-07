@@ -21,7 +21,7 @@ const Header = ({ currentUser, hidden }) => {
             <OptionsContainer>
                 <OptionLink to='/shop'>Shop</OptionLink>
                 {/* TODO: ADD THE URL FOR CONTACT AND BUILD THE PAGE */}
-                <OptionLink to='/shop'>Contact</OptionLink>
+                <OptionLink to='/contact'>Contact</OptionLink>
                 {
                     currentUser
                     // by passing div we transform Link to a div

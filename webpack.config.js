@@ -9,6 +9,9 @@ module.exports = {
 			'./src/index.js',
 		]
     },
+    resolve: {
+        fallback: { "path": require.resolve("path-browserify") }
+    },
     output: {
         // the path represent where we are going to put those bundled files
         path: path.resolve(__dirname, 'dist'),

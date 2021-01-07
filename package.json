@@ -4,10 +4,7 @@
     "moduleNameMapper": {
       "\\.(css|less|scss)$": "identity-obj-proxy",
       "\\.svg": "<rootDir>/__mocks__/svgrMock.js"
-    },
-    "setupFilesAfterEnv": [
-      "/Users/qingyuan/ecommerce-react/src/setupTests.js"
-    ]
+    }
   },
   "version": "0.1.0",
   "private": true,
@@ -17,6 +14,7 @@
     "@babel/runtime-corejs2": "^7.12.5",
     "firebase": "^6.0.2",
     "lodash.memoize": "^4.1.2",
+    "path-browserify": "^1.0.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-redux": "^7.2.2",
@@ -28,7 +26,8 @@
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
-    "styled-components": "^5.2.1"
+    "styled-components": "^5.2.1",
+    "util": "^0.12.3"
   },
   "scripts": {
     "start": "webpack serve --mode development",
